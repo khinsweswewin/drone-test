@@ -5,6 +5,10 @@ name: default
 
 workspace:
   path: /drone/src
+  
+platform:
+  os: linux
+  arch: amd64
 
 steps:
   - name: lint
