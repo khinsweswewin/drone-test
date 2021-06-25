@@ -3,23 +3,9 @@ kind: pipeline
 type: docker
 name: default
 
-workspace:
-  path: /drone/src
-  
-platform:
-  os: linux
-  arch: amd64 
-
- clone:
-  depth: 50 
-
 steps:
   - name: lint
     image: python:3.7-alpine
     commands:
       - python -m pip install -r requirements.txt
       - flake8
-  
-trigger:
-  branch:
-  - branch1
