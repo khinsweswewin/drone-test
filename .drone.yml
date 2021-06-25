@@ -10,9 +10,6 @@ platform:
   os: linux
   arch: amd64 
   
- trigger:
-  branch:
-  - branch1 
 
 steps:
   - name: lint
