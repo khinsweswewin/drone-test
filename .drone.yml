@@ -4,7 +4,12 @@ type: docker
 name: default
 
 steps:
-  - name: lint
-    image: python:3.7-alpine
-    commands:
-      - python -m pip install -r requirements.txt
+- name: build
+  image: golang
+  commands:
+  - go build
+  - go test
+
+---
+kind: signature
+hmac: F10E2821BBBEA527EA02200352313BC059445190
