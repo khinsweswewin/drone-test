@@ -1,4 +1,3 @@
----
 kind: pipeline
 type: docker
 name: default
@@ -7,12 +6,22 @@ steps:
 - name: build
   image: golang
   commands:
-  - go build
+  - go get
   - go test
-kind: template
-load: plugin.starlark
-data:
-  stepName: my_step
-  image: my_image
-  commands: my_command
+  - go build
 
+- name: publish
+  image: plugins/docker
+  settings:
+    username: kevinbacon
+    password: pa55word
+    repo: foo/bar
+    tags:
+    - 1.0.0
+    - 1.0
+
+- name: notify
+  image: plugins/slack
+  settings:
+    channel: developers
+    username: drone
